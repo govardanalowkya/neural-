@@ -1,0 +1,19 @@
+import numpy as np
+def dense_layer(x, weights, relu):
+    z = np.dot(weights, x)
+    return relu(z)
+def relu(x):
+    return np.maximum(0, x)
+# Input now has 3 features
+x = np.array([1, 0, 1])
+# Weights must have 3 values per neuron
+weights = np.array([
+    [0.8, 0.01, 0.5],    # neuron 1 weights
+    [0.4, 0.005, 0.2]    # neuron 2 weights
+])
+output = dense_layer(x, weights, relu)
+print("Model Output:", output)
+if output[0] > 1:
+    print("Prediction: SPAM")
+else:
+    print("Prediction: NOT SPAM")*
