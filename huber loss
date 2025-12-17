@@ -1,0 +1,31 @@
+import numpy as np
+
+# Input data (features)
+X = np.array([12, 4])
+
+# True output
+y_true = np.array([10.0])
+
+# Network parameters
+weights = np.array([0.5, 0.3])
+bias = 1.0
+
+# Huber loss threshold
+delta = 1.0
+
+# Feed-forward step (prediction)
+y_pred = np.dot(weights, X) + bias
+
+# Huber Loss calculation
+error = y_true - y_pred
+abs_error = np.abs(error)
+
+loss = np.where(
+    abs_error <= delta,
+    0.5 * error**2,
+    delta * (abs_error - 0.5 * delta)
+)
+
+# Output
+print("Predicted Output:", y_pred)
+print("Huber Loss:", loss)
